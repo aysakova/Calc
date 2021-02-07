@@ -8,31 +8,41 @@
 
 import java.util.Scanner;
 
-public class calculator {
+public class Calculator {
 
     public static void main(String[] args) {
 
-        double result = 0.0;
-        int num1;
-        int num2;
-        char operator;
+        Scanner sc = new Scanner(System.in);
 
-        Scanner in = new Scanner(System.in);
+        // prompt input
+        System.out.print("Input: \n");
+        String str = sc.nextLine();
 
-        System.out.print("Input: \n ");
+        // pass string into array of chars
+        char[] ch = new char[str.length()];
 
-        num1 = in.nextInt();
-        num2 = in.nextInt();
-        operator = in.next().charAt(1);
-
-        switch (operator) {
-            case '+' -> result = num1 + num2;
-            case '-' -> result = num1 - num2;
-            case '*' -> result = num1 * num2;
-            case '/' -> result = num1 / num2;
-
+        for (int i = 0; i < str.length(); i++) {
+            ch[i] = str.charAt(i);
         }
+        // parse each char
+        double num1 = Integer.parseInt(String.valueOf(ch[0]));
+        double num2 = Integer.parseInt(String.valueOf(ch[2]));
+        char op = ch[1];
 
-        System.out.println("Output: \n" + result);
+        // loop [1] element to find operator and perform equation
+        switch (op) {
+            case '+':
+                System.out.print((num1 + num2));
+                break;
+            case '-':
+                System.out.print((num1 - num2));
+                break;
+            case '*':
+                System.out.print((num1 * num2));
+                break;
+            case '/':
+                System.out.println((num1 / num2));
+                break;
+        }
     }
 }
