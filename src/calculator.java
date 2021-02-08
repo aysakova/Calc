@@ -6,43 +6,48 @@
 // proper numbers
 // wrong input (num, ops) --> EXIT
 
+import java.util.Arrays;
 import java.util.Scanner;
-
 public class Calculator {
 
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-
-        // prompt input
         System.out.print("Input: \n");
         String str = sc.nextLine();
+        String[] arrOfCharss = str.split("(?<=\\d)(?=\\D)|(?<=\\D)(?=\\d)");
 
-        // pass string into array of chars
-        char[] ch = new char[str.length()];
+        int num1 = Integer.parseInt(arrOfCharss[0]);
+        int num2 = Integer.parseInt(arrOfCharss[2]);
+        String op = arrOfCharss[1];
 
-        for (int i = 0; i < str.length(); i++) {
-            ch[i] = str.charAt(i);
-        }
-        // parse each char
-        double num1 = Integer.parseInt(String.valueOf(ch[0]));
-        double num2 = Integer.parseInt(String.valueOf(ch[2]));
-        char op = ch[1];
-
-        // loop [1] element to find operator and perform equation
+        int result = 0;
+        Calculate calc = new Calculate(num1, num2);
         switch (op) {
-            case '+':
-                System.out.print((num1 + num2));
-                break;
-            case '-':
-                System.out.print((num1 - num2));
-                break;
-            case '*':
-                System.out.print((num1 * num2));
-                break;
-            case '/':
-                System.out.println((num1 / num2));
-                break;
+            case "+" : result = calc.add();
+            break;
+            case "-" : result = calc.sub();
+            break;
+            case "*" : result = calc.mul();
+            break;
+            case "/" : result = calc.div();
+            break;
         }
+
+        System.out.println("Output \n" + result);
+
+
+        System.out.print("Output: \n");
     }
+}
+class Calculate {
+        int a, b;
+        Calculate(int a, int b) {
+            this.a = a;
+            this.b = b;
+        }
+        int add() { return a+b; }
+        int sub() { return a-b; }
+        int mul() { return a*b; }
+        int div() { return a/b; }
 }
