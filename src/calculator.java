@@ -41,7 +41,7 @@ public class Calculator {
                     num1 = Integer.parseInt(ourNums[0]);
                     num2 = Integer.parseInt(ourNums[1]);
                     result = calc.calculate(num1,num2,op);
-                    System.out.println("Output \n" + result);
+                    System.out.println("Output: \n" + result);
                 } else System.err.print("Ошибка ввода данных");
                 System.exit(7);
 
@@ -66,10 +66,10 @@ public class Calculator {
                    String resultString;
                    try {
                        resultString = Arrays.asList(romeForResult).get(result - 1);
-                       System.out.println("Output \n" + resultString);
+                       System.out.println("Output: \n" + resultString);
                    }
                    catch (ArrayIndexOutOfBoundsException exception3) {
-                       System.out.println("Output \n" + 0);
+                       System.out.println("Output: \n" + 0);
                    }
 
                }
