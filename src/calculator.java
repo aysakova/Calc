@@ -1,3 +1,5 @@
+// input EITHER 1,2,3,4... OR I, II, IV... NOT TOGETHER
+// wrong input (num, ops) --> EXIT ONLY ROMANS LEFT
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -11,7 +13,7 @@ public class Calculator {
 
         String[] arrOfStr = sc.nextLine().split("(?<=[+*-/])|(?=[+*-/])");
         if (arrOfStr.length != 3) {
-            System.err.println("Проверьте правильность ввода, а именно количество введенных переменных и операторов");
+            System.err.println("Ошибка ввода данных");
             System.exit(8); // array mismatch
         }
         String[] ourNums = {arrOfStr[0], arrOfStr[2]};
@@ -62,9 +64,14 @@ public class Calculator {
                    }
                    result = calc.calculate(num1,num2,op);
                    String resultString;
-                   resultString = Arrays.asList(romeForResult).get(result-1);
+                   try {
+                       resultString = Arrays.asList(romeForResult).get(result - 1);
+                       System.out.println("Output \n" + resultString);
+                   }
+                   catch (ArrayIndexOutOfBoundsException exception3) {
+                       System.out.println("Output \n" + 0);
+                   }
 
-                   System.out.println("Output \n" + resultString);
                }
                else {
    System.err.print("Ошибка ввода данных");
